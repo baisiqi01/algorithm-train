@@ -60,14 +60,14 @@ package leetcode.editor.cn;
 //Java：删除有序数组中的重复项
 public class P26RemoveDuplicatesFromSortedArray {
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution26 solution = new Solution26();
         int[] nums = {1, 1, 2};
         solution.removeDuplicates(nums);
     }
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution26 {
     public int removeDuplicates(int[] nums) {
         int i = 0;
         for (int j = 1; j < nums.length; j++) {
