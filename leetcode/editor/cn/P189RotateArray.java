@@ -64,7 +64,7 @@ class Solution189 {
              reverse(nums,k,nums.length-1);
     }
     public void reverse(int[] nums, int start , int end){
-        int temp = 0;
+        int temp;
         while(start < end) {
             temp = nums[start];
             nums[start] = nums[end];
