@@ -52,7 +52,7 @@ import java.util.Map;
 //Java：两数之和
 public class P1TwoSum{
     public static void main(String[] args) {
-       leetcode.editor.cn2.Solution solution = new leetcode.editor.cn2.Solution();
+       Solution1 solution = new Solution1();
        //TEST
     }
 }
