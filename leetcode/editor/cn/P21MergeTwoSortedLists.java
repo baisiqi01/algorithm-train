@@ -37,10 +37,11 @@
 
 
 package leetcode.editor.cn;
+
 //Java：合并两个有序链表
 public class P21MergeTwoSortedLists{
     public static void main(String[] args) {
-       Solution solution = new Solution();
+       leetcode.editor.cn2.Solution solution = new leetcode.editor.cn2.Solution();
        //TEST
     }
 }

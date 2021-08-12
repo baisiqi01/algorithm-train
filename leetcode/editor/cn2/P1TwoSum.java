@@ -44,29 +44,40 @@
 // Related Topics 数组 哈希表
 
 
-package leetcode.editor.cn;
-
+package leetcode.editor.cn2;
 import java.util.HashMap;
 import java.util.Map;
 
 //Java：两数之和
-public class P1TwoSum{
+public class P1TwoSum {
     public static void main(String[] args) {
-       leetcode.editor.cn2.Solution solution = new leetcode.editor.cn2.Solution();
-       //TEST
+        Solution1_2 solution = new Solution1_2();
+        //TEST
     }
 }
+
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution1 {
+class Solution1_1 {
     public int[] twoSum(int[] nums, int target) {
-        Map<Integer,Integer> map = new HashMap<>();
-        for(int i=0; i<nums.length; i++) {
-            if(map.get(target-nums[i]) != null){
-                return new int[]{i,map.get(target-nums[i])};
-            }else{
-                map.put(nums[i],i);
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.get(target - nums[i]) != null) {
+                return new int[]{i, map.get(target - nums[i])};
+            } else {
+                map.put(nums[i], i);
             }
         }
+        return null;
+    }
+}
+
+class Solution1_2 {
+    public int[] twoSum(int[] nums, int target) {
+        for (int i = 0; i < nums.length - 1; i++)
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target)
+                    return new int[]{i, j};
+            }
         return null;
     }
 }
