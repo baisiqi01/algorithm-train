@@ -36,12 +36,12 @@
 // Related Topics 递归 链表
 
 
-package leetcode.editor.cn;
+package leetcode.editor.cn2;
 
 //Java：合并两个有序链表
 public class P21MergeTwoSortedLists{
     public static void main(String[] args) {
-       leetcode.editor.cn2.Solution solution = new leetcode.editor.cn2.Solution();
+       //Solution solution = new Solution();
        //TEST
     }
 }

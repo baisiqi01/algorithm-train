@@ -46,7 +46,6 @@ package leetcode.editor.cn;
 //Java：加一
 public class P66PlusOne{
     public static void main(String[] args) {
-       leetcode.editor.cn2.Solution solution = new leetcode.editor.cn2.Solution();
        //TEST
     }
 }

@@ -51,7 +51,7 @@ import java.util.Map;
 //Java：两数之和
 public class P1TwoSum {
     public static void main(String[] args) {
-        Solution1_2 solution = new Solution1_2();
+//        Solution1_2 solution = new Solution1_2();
         //TEST
     }
 }
