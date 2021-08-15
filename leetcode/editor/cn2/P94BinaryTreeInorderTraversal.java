@@ -113,7 +113,7 @@ class Solution94_1 {
     }
 }
 
-class Solution_2 {
+class Solution94_2 {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res =new ArrayList<Integer>();
         Deque<TreeNode> stack = new LinkedList<>();
