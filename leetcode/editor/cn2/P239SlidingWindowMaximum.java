@@ -63,32 +63,60 @@
 
 package leetcode.editor.cn2;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 //Java：滑动窗口最大值
-public class P239SlidingWindowMaximum{
+public class P239SlidingWindowMaximum {
     public static void main(String[] args) {
-       //Solution solution = new Solution();
-       //TEST
+        //Solution solution = new Solution();
+        //TEST
     }
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
 //滑动窗口利用堆排序，提交时候超出时间限制
-class Solution395_1 {
+class Solution239_1 {
     public int[] maxSlidingWindow(int[] nums, int k) {
         if (nums == null || nums.length == 0 || k < 1) return new int[0];
         int windowsNum = nums.length - k + 1;
         int[] res = new int[windowsNum];
-        PriorityQueue<Integer> maxPQ = new PriorityQueue<>((v1, v2) -> v2-v1);
-        for(int i =0; i < nums.length; i++) {
+        PriorityQueue<Integer> maxPQ = new PriorityQueue<>((v1, v2) -> v2 - v1);
+        for (int i = 0; i < nums.length; i++) {
             int start = i - k;
-            if (start >= 0){
+            if (start >= 0) {
                 maxPQ.remove(nums[start]);
             }
             maxPQ.offer(nums[i]);
             if (maxPQ.size() == k) {
-                res[i-k+1] = maxPQ.peek();
+                res[i - k + 1] = maxPQ.peek();
+            }
+        }
+        return res;
+    }
+}
+
+//滑动窗口利用双端队列
+class Solution239_2 {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums == null || k <= 0) return new int[0];
+        int len = nums.length;
+        Deque<Integer> deque = new LinkedList<>();
+        int[] res = new int[len - k + 1];//nums of window
+        for (int i = 0; i < len; i++) {
+           //删除越界元素
+            while (!deque.isEmpty() && deque.peekFirst() < i-k+1) {
+                deque.pollFirst();
+            }
+            //删除小于插入元素、
+            while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
+                deque.pollLast();
+            }
+            //添加元素
+            deque.offerLast(i);
+            if(i - k +1 >=0) {
+                res[i - k + 1] = nums[deque.getFirst()];
             }
         }
         return res;
