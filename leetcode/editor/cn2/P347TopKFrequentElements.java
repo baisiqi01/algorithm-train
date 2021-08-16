@@ -78,4 +78,22 @@ class Solution347 {
         return res;
     }
 }
+
+class Solution347_2 {
+    public int[] topKFrequent(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        PriorityQueue<Map.Entry<Integer,Integer>> maxHeap = new PriorityQueue<>((v1,v2) ->v2.getValue() -v1.getValue());
+        for(Map.Entry<Integer,Integer> entry : map.entrySet()) {
+            maxHeap.offer(entry);
+        }
+        int[] res = new int[k];
+        for(int i = 0; i < k; i++) {
+            res[i] = maxHeap.poll().getKey();
+        }
+        return  res;
+    }
+}
 //leetcode submit region end(Prohibit modification and deletion)
