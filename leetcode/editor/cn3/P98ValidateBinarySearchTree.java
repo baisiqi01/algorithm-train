@@ -66,15 +66,32 @@ class TreeNode {
 // Definition for a binary tree node.
 
 
-class Solution98 {
+class Solution98_1 {
     Long temp = Long.MIN_VALUE;
 
     public boolean isValidBST(TreeNode root) {
         if (root == null) return true;
         if (!isValidBST(root.left)) return false;
-        if (root.val <= temp) return  false;
-        temp  = (long)root.val ;
+        if (root.val <= temp) return false;
+        temp = (long) root.val;
         return isValidBST(root.right);
     }
 }
+
+class Solution98_2 {
+    public boolean isValidBST(TreeNode root) {
+        return validBST(Long.MIN_VALUE, Long.MAX_VALUE, root);
+
+    }
+
+    private boolean validBST(Long min, Long max, TreeNode node) {
+        //terminal
+        if (node == null) return true;
+        if (node.val < min || node.val > max) return false;
+        return validBST(min, (long) node.val, node.left) && validBST((long) node.val, max, node.right);
+    }
+}
 //leetcode submit region end(Prohibit modification and deletion)
+
+
+
