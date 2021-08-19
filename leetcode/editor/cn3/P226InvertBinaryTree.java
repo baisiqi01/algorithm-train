@@ -52,7 +52,7 @@ public class P226InvertBinaryTree {
  * }
  * }
  */
-class Solution {
+class Solution226 {
     public TreeNode invertTree(TreeNode root) {
         //terminal
         if (root == null) return null;
