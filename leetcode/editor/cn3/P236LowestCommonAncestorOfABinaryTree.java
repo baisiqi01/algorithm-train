@@ -63,7 +63,7 @@ public class P236LowestCommonAncestorOfABinaryTree{
 //      TreeNode(int x) { val = x; }
 //  }
 
-class Solution {
+class Solution236 {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         //terminal
         if (root == null || root ==p || root == q) return  root;
