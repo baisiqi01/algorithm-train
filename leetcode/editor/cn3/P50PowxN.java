@@ -42,8 +42,8 @@ package leetcode.editor.cn3;
 //Java：Pow(x, n)
 public class P50PowxN {
     public static void main(String[] args) {
-        Solution50_1 solution = new Solution50_1();
-        System.out.println(solution.myPow(1.00000, 2147483647));
+        Solution50_3 solution = new Solution50_3();
+        System.out.println(solution.myPow(1.00000, -2147483648));
     }
 }
 
@@ -64,6 +64,27 @@ class Solution50_1 {
             return temp * temp;
         } else {
             //奇数数
+            return temp * temp * x;
+        }
+    }
+}
+
+class Solution50_3 {
+    //递归
+    public double myPow(double x, int n) {
+        if (n == Integer.MIN_VALUE) {
+            x = x * x;
+            n = n / 2;
+        }
+        if (n < 0) {
+            n = -n;
+            x = 1 / x;
+        }
+        if (n == 0) return 1;
+        double temp = myPow(x, n / 2);
+        if (n % 2 == 0) {
+            return temp * temp;
+        } else {
             return temp * temp * x;
         }
     }
