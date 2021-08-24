@@ -64,4 +64,20 @@ class Solution49 {
         return new ArrayList<>(map.values());
     }
 }
+
+class Solution49_2 {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> map =new HashMap<>();
+        if(strs == null || strs.length == 0) return new ArrayList<>();
+        for(String s : strs) {
+            char[] word = s.toCharArray();
+            Arrays.sort(word);
+            String key = String.valueOf(word);
+            if(!map.containsKey(key)) map.put(key ,new ArrayList());
+            map.get(key).add(s);
+        }
+        return new ArrayList<>(map.values());
+    }
+}
+
 //leetcode submit region end(Prohibit modification and deletion)
