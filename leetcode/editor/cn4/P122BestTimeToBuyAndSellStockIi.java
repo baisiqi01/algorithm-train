@@ -55,7 +55,7 @@ public class P122BestTimeToBuyAndSellStockIi {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 //贪心，只能计算最大利润实际
-class Solution {
+class Solution122 {
     public int maxProfit(int[] prices) {
         int res = 0;
         if (prices.length < 1) return res;
