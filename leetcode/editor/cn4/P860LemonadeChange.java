@@ -62,13 +62,13 @@ package leetcode.editor.cn4;
 //Java：柠檬水找零
 public class P860LemonadeChange {
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        SolutionP860 solution = new SolutionP860();
         solution.lemonadeChange(new int[]{5,5,5,10,20});
     }
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class SolutionP860 {
     public boolean lemonadeChange(int[] bills) {
         int five = 0, ten = 0;
         for (int i = 0; i < bills.length; i++) {
