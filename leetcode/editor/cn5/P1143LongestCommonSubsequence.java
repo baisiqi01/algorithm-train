@@ -50,7 +50,7 @@ package leetcode.editor.cn5;
 //Java：最长公共子序列
 public class P1143LongestCommonSubsequence{
     public static void main(String[] args) {
-       //Solution solution = new Solution();
+       //SolutionP1143 solution = new SolutionP1143();
        //TEST
     }
 }
