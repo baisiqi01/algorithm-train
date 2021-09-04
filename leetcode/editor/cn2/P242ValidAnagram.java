@@ -35,13 +35,15 @@
 
 package leetcode.editor.cn2;
 
+import java.util.Arrays;
+
 //Java：有效的字母异位词
 public class P242ValidAnagram {
     public static void main(String[] args) {
-        Solution242 solution = new Solution242();
+        Solution242_2 solution = new Solution242_2();
         String s1 = "cat";
-        String s2 = "rat";
-        solution.isAnagram(s1,s2);
+        String s2 = "tac";
+        System.out.println(solution.isAnagram(s1,s2));
     }
 }
 
@@ -65,3 +67,13 @@ class Solution242 {
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
+class Solution242_2 {
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) return false;
+        char[] str1 = s.toCharArray();
+        char[] str2 = t.toCharArray();
+        Arrays.sort(str1);
+        Arrays.sort(str2);
+        return Arrays.equals(str1,str2);
+    }
+}
