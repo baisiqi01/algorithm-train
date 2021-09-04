@@ -47,6 +47,8 @@
 package leetcode.editor.cn2;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 //Java：N 叉树的前序遍历
@@ -93,9 +95,18 @@ class Solution589_1 {
 
 class Solution589_2 {
     public List<Integer> preorder(Node root) {
-
-        return null;
-
+        List<Integer> res = new ArrayList<>();
+        if (root == null) return res;
+        Deque<Node> stack = new LinkedList<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node temp = stack.pop();
+            res.add(temp.val);
+            for(int i = temp.children.size()-1; i >= 0; i-- ) {
+                stack.push(temp.children.get(i));
+            }
+        }
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
