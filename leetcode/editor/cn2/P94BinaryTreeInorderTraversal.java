@@ -55,31 +55,27 @@
 
 package leetcode.editor.cn2;
 
+import leetcode.editor.util.TreeNode;
+
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
+import static leetcode.editor.util.TreeNode.mkTree;
+
 //Java：二叉树的中序遍历
 public class P94BinaryTreeInorderTraversal{
     public static void main(String[] args) {
         Solution94_1 solution = new Solution94_1();
-       //TEST
+        Solution94_1 solution2 = new Solution94_1();
+        TreeNode node = mkTree( "[3,9,20,null,null,15,7]");
+        System.out.println(solution.inorderTraversal(node));
+        System.out.println(solution2.inorderTraversal(node));
     }
 }
 
- class TreeNode {
-     int val;
-     TreeNode left;
-     TreeNode right;
-     TreeNode() {}
-     TreeNode(int val) { this.val = val; }
-     TreeNode(int val, TreeNode left, TreeNode right) {
-         this.val = val;
-         this.left = left;
-         this.right = right;
-     }
- }
+
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -102,35 +98,35 @@ public class P94BinaryTreeInorderTraversal{
 class Solution94_1 {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        inorder(root,res);
+        inorder(root, res);
         return res;
     }
+
     private void inorder(TreeNode root, List<Integer> res) {
-        if(root ==  null) return;
+        if(root == null) return;
         inorder(root.left,res);
         res.add(root.val);
         inorder(root.right,res);
     }
+
 }
 
 class Solution94_2 {
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> res =new ArrayList<Integer>();
+        List<Integer> res = new LinkedList<>();
+        if (root == null) return res;
         Deque<TreeNode> stack = new LinkedList<>();
+        stack.push(root);
         while (root != null || !stack.isEmpty()) {
-            //到头了
-            while(root != null)
-                if (root != null) {
-                    stack.push(root);
-                    root = root.left;
-                } else {
-                    TreeNode temp = stack.pop();
-                    res.add(temp.val);
-                    root = temp.right;
-                }
-
+            while(root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            TreeNode temp = stack.pop();
+            res.add(temp.val);
+            root = root.right;
         }
-        return res;
+    return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

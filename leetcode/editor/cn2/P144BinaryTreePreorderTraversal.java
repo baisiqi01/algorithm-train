@@ -55,6 +55,8 @@
 
 package leetcode.editor.cn2;
 
+import leetcode.editor.util.TreeNode;
+
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
