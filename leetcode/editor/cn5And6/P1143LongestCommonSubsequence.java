@@ -46,7 +46,7 @@
 // Related Topics 字符串 动态规划
 
 
-package leetcode.editor.cn5;
+package leetcode.editor.cn5And6;
 //Java：最长公共子序列
 public class P1143LongestCommonSubsequence{
     public static void main(String[] args) {

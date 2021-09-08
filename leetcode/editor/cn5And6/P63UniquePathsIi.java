@@ -43,7 +43,7 @@
 // Related Topics 数组 动态规划 矩阵
 
 
-package leetcode.editor.cn5;
+package leetcode.editor.cn5And6;
 //Java：不同路径 II
 public class P63UniquePathsIi{
     public static void main(String[] args) {

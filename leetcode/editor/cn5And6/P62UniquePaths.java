@@ -49,7 +49,7 @@
 // Related Topics 数学 动态规划 组合数学
 
 
-package leetcode.editor.cn5;
+package leetcode.editor.cn5And6;
 
 //Java：不同路径
 public class P62UniquePaths {

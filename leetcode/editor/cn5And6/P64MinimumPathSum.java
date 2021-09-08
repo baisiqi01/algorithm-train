@@ -33,7 +33,7 @@
 // Related Topics 数组 动态规划 矩阵
 
 
-package leetcode.editor.cn5;
+package leetcode.editor.cn5And6;
 //Java：最小路径和
 public class P64MinimumPathSum{
     public static void main(String[] args) {
