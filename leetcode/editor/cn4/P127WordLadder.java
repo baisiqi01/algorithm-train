@@ -50,63 +50,55 @@ package leetcode.editor.cn4;
 import java.util.*;
 
 //Java：单词接龙
-public class P127WordLadder{
+public class P127WordLadder {
     public static void main(String[] args) {
+//        输入
+////        "hot"
+////        "dog"
+////                ["hot","dog"]
         SolutionP127 solution = new SolutionP127();
-       String[] s = {"hot","dot","dog","lot","log","cog"};
-       solution.ladderLength("hit","cog",Arrays.asList(s));
+//        String[] s = {"hot", "dot", "dog", "lot", "log", "cog"};
+        String[] s = {"hot","dog"};
+        System.out.println(solution.ladderLength("hot", "dog", Arrays.asList(s)));
     }
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class SolutionP127 {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        //wordSet存储中间字符串，方便判断
-        Set<String>  wordSet = new HashSet<>();
-        if(wordSet.size() != 0 ||!wordList.contains(endWord)) return 0;
-        for(String s : wordList) wordSet.add(s);
-        //广度优先需要声明queue 和 visitedList
+        int res = 0;
+        Set<String> wordSet = new HashSet<>();
+        for (String s : wordList) wordSet.add(s);
+        if (wordSet.size() == 0 || !wordSet.contains(endWord)) return res;
         Queue<String> queue = new LinkedList<>();
-        Set<String> visited = new HashSet<>();
-        //开始广度，其实步骤1
         queue.offer(beginWord);
+        Set<String> visited = new HashSet<>();
         visited.add(beginWord);
-        wordSet.remove(beginWord);
-        int step = 1;
+        res = 1;
         while (!queue.isEmpty()) {
             int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                String currentWord = queue.poll();
-                if(changeWordEveryOneLetter(currentWord,beginWord,endWord,queue,visited,wordSet)) {
-                    return step + 1 ;
-                }
+            for (int n = 0; n < size; n++) {
+                String temp = queue.poll();
+                char[] chars = temp.toCharArray();
+                for (int i = 0; i < chars.length; i++)
+                    for (char c = 'a'; c <= 'z'; c++) {
+                        char originChar = chars[i];
+                        chars[i] = c;
+                        String replaceString = String.valueOf(chars);
+                        if (replaceString.equals(endWord)) return res + 1;
+                        if (wordSet.contains(replaceString) && !visited.contains(replaceString)) {
+                            queue.offer(replaceString);
+                            visited.add(replaceString);
+                        }
+                        chars[i] = originChar;
+                    }
             }
-            step++;
+            res++;
         }
+
         return 0;
+
     }
 
-    private boolean changeWordEveryOneLetter(String currentWord, String beginWord, String endWord, Queue<String> queue, Set<String> visited, Set<String> wordSet) {
-        char[] curChar = currentWord.toCharArray();
-        for (int i = 0; i < endWord.length(); i++) {
-            char originChar =curChar[i];
-            for (char j = 'a'; j<= 'z'; j++) {
-                if(j == originChar) continue;
-                curChar[i] = j;
-                String nextWord = String.valueOf(curChar);
-                if(wordSet.contains(nextWord)) {
-                    if(endWord.equals(nextWord)) {
-                        return true;
-                    }
-                    if(!visited.contains(nextWord)) {
-                        queue.offer(nextWord);
-                        visited.add(nextWord);
-                    }
-                }
-            }
-            curChar[i] = originChar;
-        }
-        return false;
-    }
 }
 //leetcode submit region end(Prohibit modification and deletion)

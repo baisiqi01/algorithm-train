@@ -51,7 +51,7 @@ public class P212WordSearchIi{
     }
 }
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class SolutionP212 {
     class TrieNode{
         TrieNode[] next = new TrieNode[26];
         String word;
