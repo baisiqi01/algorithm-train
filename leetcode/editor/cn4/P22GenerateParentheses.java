@@ -48,18 +48,16 @@ class Solution22 {
     private List<String> res = new ArrayList<>();
 
     public List<String> generateParenthesis(int n) {
-        dfs(0,0, n, "");
+        dfs(0, 0, "",n);
         return res;
     }
 
-    private void dfs(int left, int right, int n, String s) {
-        if(left == n && right ==n) {
-            res.add(s);
-            return;
-        }
-        if (left < n) dfs(left + 1 ,right, n,s + "(");
-        if (right < left) dfs(left, right +1, n, s +=")");
+    private void dfs(int left, int right, String s, int n) {
+        if (left < n) dfs(left + 1, right, s + "(", n);
+        if (right < left) dfs(left, right + 1, s + ")", n);
+        if (left == n && right == n) res.add(s);
     }
+
 
 }
 //leetcode submit region end(Prohibit modification and deletion)

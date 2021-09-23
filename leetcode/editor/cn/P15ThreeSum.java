@@ -48,7 +48,7 @@ import java.util.List;
 public class P15ThreeSum {
     public static void main(String[] args) {
         Solution15 solution = new Solution15();
-        int[] nums = {1,-1,-1,0};
+        int[] nums = {1, -1, -1, 0};
         System.out.println(solution.threeSum(nums));
 
     }
@@ -58,32 +58,27 @@ public class P15ThreeSum {
 class Solution15 {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        //O(nlogn)
+        int numsLen = nums.length;
         Arrays.sort(nums);
-        int len = nums.length;
-        for (int i = 0; i < len - 2; i++) {
-            if (i == 0 || nums[i] != nums[i - 1]) {
-                int target = -nums[i];
-                int left = i + 1, right = len - 1;
-                while (left < right) {
-                    if (target == nums[left] + nums[right]) {
-                        res.add(Arrays.asList(nums[i], nums[left], nums[right]));
-                        //排重
-                        while (left < right && nums[left] == nums[left + 1]) left++;
-                        while (left < right && nums[right] == nums[right - 1]) right--;
-                        left++;right--;
-                    } else if (target < nums[left] + nums[right]) {
-                       right--;
-                    }
-                    else {
-                        left++;
-                    }
+        if (nums == null || numsLen == 0) return res;
+        for (int i = 0; i < numsLen - 2; i++) {
+            if (i != 0 && nums[i] == nums[i - 1]) continue;
+            int target = -nums[i];
+            int left = i + 1, right = numsLen - 1;
+            while (left < right) {
+                if (target == nums[left] + nums[right]) {
+                    res.add(Arrays.asList(nums[i], nums[left], nums[right]));
+                    while (left < right && nums[left] == nums[left + 1]) left ++;
+                    while (left < right && nums[right] == nums[right - 1]) right--;
+                    left++; right--;
+                } else if (target > nums[left] + nums[right]) {
+                    left++;
+                } else {
+                    right--;
                 }
             }
-
         }
         return res;
-
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

@@ -34,34 +34,37 @@ import java.util.LinkedList;
 //Java：滑动窗口的最大值
 public class Offer59IHuaDongChuangKouDeZuiDaZhiLcof{
     public static void main(String[] args) {
-       //Solution solution = new Solution();
+        SolutionOfferP59 solution = new SolutionOfferP59();
        //TEST
+        int[] nums = {1,-1};
+        System.out.println(solution.maxSlidingWindow(nums,1));
     }
 }
 //leetcode submit region begin(Prohibit modification and deletion)
 class SolutionOfferP59 {
     public int[] maxSlidingWindow(int[] nums, int k) {
-        if(nums.length == 0 || k == 0) return new int[0];
+        int n = nums.length;
+        if(n == 0 || k == 0) return new int[0];
         //双向队列
         Deque<Integer> deque = new LinkedList<>();
         //窗口数量
-        int[] res = new int[nums.length - k + 1];
+        int[] res = new int[n - k + 1];
         //未形成窗口
         for (int i = 0; i < k; i++) {
-            while(!deque.isEmpty() && deque.peekLast() < nums[i]) {
+            while(!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]) {
                 deque.pollLast();
             }
-            deque.offerLast(nums[i]);
+            deque.offerLast(i);
         }
-        res[0] = deque.peekFirst();
+        res[0] = nums[deque.peekFirst()];
         //形成窗口后
-        for (int i = k; i < nums.length; i ++) {
-            if (deque.getFirst() == nums[i]) deque.pollFirst();
-            while(!deque.isEmpty() && deque.peekLast() < nums[i]) {
+        for (int i = k; i < n; i ++) {
+            while(!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]) {
                 deque.pollLast();
             }
-            deque.offerLast(nums[i]);
-            res[i - k + 1] = deque.peekFirst();
+            deque.offerLast(i);
+            while (deque.peekFirst() <= i -k)  deque.pollFirst();
+            res[i - k + 1] = nums[deque.peekFirst()];
         }
         return res;
     }
