@@ -61,18 +61,17 @@ class SolutionP198_1 {
 
 //leetcode submit region end(Prohibit modification and deletion)
 //动态优化，空间未优化，事件O(n)  空间优化至O(1)
-class SolutionP198_2 {
+class SolutionP198_2{
     public int rob(int[] nums) {
-        int length = nums.length;
-        if (length == 1) return nums[0];
-        int first = nums[0];
-        int second = Math.max(nums[0], nums[1]);
-        for(int i = 2; i < length; i++) {
+        int res = 0;
+        int n = nums.length;
+        if(n == 1) return nums[0];
+        int first = nums[0],second = Math.max(nums[0],nums[1]);
+        for(int i = 2; i < n; i++) {
             int temp = second;
-            second = Math.max(first+ nums[i],second);
+            second = Math.max(first + nums[i],second);
             first = temp;
         }
         return second;
-
     }
 }

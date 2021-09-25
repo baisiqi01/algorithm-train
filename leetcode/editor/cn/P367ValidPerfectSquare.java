@@ -34,8 +34,8 @@ package leetcode.editor.cn;
 //Java：有效的完全平方数
 public class P367ValidPerfectSquare {
     public static void main(String[] args) {
-        //Solution solution = new Solution();
-        //TEST
+        SolutionP367 solution = new SolutionP367();
+        solution.isPerfectSquare(2147483647);
     }
 }
 
@@ -45,11 +45,11 @@ class SolutionP367 {
         if (num < 2) return true;
         int left = 2, right = num;
         while (left <= right) {
-            int mid = left + (right - left) / 2;
+            long mid = left + (right - left) / 2;
             long temp = mid * mid;
             if (temp == num) return true;
-            else if (temp < num) left = mid + 1;
-            else right = mid - 1;
+            else if (temp < num) left = (int)mid + 1;
+            else right = (int)mid - 1;
         }
         return false;
     }

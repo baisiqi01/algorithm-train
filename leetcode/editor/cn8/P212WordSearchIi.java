@@ -38,7 +38,7 @@
 // Related Topics 字典树 数组 字符串 回溯 矩阵
 
 
-package leetcode.editor.cn;
+package leetcode.editor.cn8;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +50,7 @@ public class P212WordSearchIi{
        //TEST
     }
 }
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class SolutionP212 {
     class TrieNode{

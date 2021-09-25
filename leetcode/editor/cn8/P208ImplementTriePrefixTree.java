@@ -46,9 +46,10 @@
 // Related Topics 设计 字典树 哈希表 字符串
 
 
-package leetcode.editor.cn;
+package leetcode.editor.cn8;
+
 //Java：实现 Trie (前缀树)
-public class P208ImplementTriePrefixTree{
+public class P208ImplementTriePrefixTree {
     public static void main(String[] args) {
         Trie trie = new Trie();
         trie.insert("apple");
@@ -59,45 +60,54 @@ public class P208ImplementTriePrefixTree{
         System.out.println(trie.search("app"));    // 返回 True
     }
 }
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Trie {
-    private Trie[] children ;
+    private Trie[] children;
     private boolean isEnd;
 
 
-    /** Initialize your data structure here. */
+    /**
+     * Initialize your data structure here.
+     */
     public Trie() {
         children = new Trie[26];
         isEnd = false;
     }
-    
-    /** Inserts a word into the trie. */
+
+    /**
+     * Inserts a word into the trie.
+     */
     public void insert(String word) {
         Trie node = this;
-        for (int i = 0; i < word.length();i++) {
+        for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
             int index = c - 'a';
-            if (node.children[index] == null)  node.children[index] = new Trie();
+            if (node.children[index] == null) node.children[index] = new Trie();
             node = node.children[index];
         }
-        node.isEnd =true;
+        node.isEnd = true;
     }
-    
-    /** Returns if the word is in the trie. */
+
+    /**
+     * Returns if the word is in the trie.
+     */
     public boolean search(String word) {
         Trie node = searchPrefix(word);
         return node != null && node.isEnd == true;
     }
 
 
-    /** Returns if there is any word in the trie that starts with the given prefix. */
+    /**
+     * Returns if there is any word in the trie that starts with the given prefix.
+     */
     public boolean startsWith(String prefix) {
         return searchPrefix(prefix) != null;
     }
 
     private Trie searchPrefix(String word) {
         Trie node = this;
-        for (int i = 0 ; i < word.length(); i++) {
+        for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
             int index = c - 'a';
             if (node.children[index] == null) return null;
