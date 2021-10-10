@@ -47,7 +47,7 @@
 // Related Topics 数组 二分查找 动态规划
 
 
-package leetcode.editor.cn;
+package leetcode.editor.cn9;
 
 import java.util.Arrays;
 
@@ -58,6 +58,7 @@ public class P300LongestIncreasingSubsequence{
        //TEST
     }
 }
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class SolutionP300 {
     public int lengthOfLIS(int[] nums) {
