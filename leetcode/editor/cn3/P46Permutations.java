@@ -76,4 +76,27 @@ class Solution46 {
         return res;
     }
 }
+
+
+class Solution46_2 {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        LinkedList<Integer> list = new LinkedList<>();
+        return dfs(nums, res, list);
+    }
+
+    private List<List<Integer>> dfs(int[] nums, List<List<Integer>> res, LinkedList<Integer> list) {
+        if(list.size() == nums.length) {
+            res.add(new ArrayList<>(list));
+            return res;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if(list.contains(nums[i])) continue;
+            list.add(nums[i]);
+            dfs(nums, res, list);
+            list.removeLast();
+        }
+        return res;
+    }
+}
 //leetcode submit region end(Prohibit modification and deletion)
